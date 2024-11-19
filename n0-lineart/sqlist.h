@@ -18,6 +18,7 @@ void lineaLocalCreat(lineaSt**);
 void* lineaDestruc(lineaSt*);
 
 int lineaPrint(lineaSt*);
+int lineaAppend(lineaSt* linea,Dtype* data);
 int lineaInsert(lineaSt* linea,int index,Dtype* data);
 int lineaDelete(lineaSt* linea,int index,Dtype* data);
 int lineaFind(lineaSt* linea,Dtype* data);

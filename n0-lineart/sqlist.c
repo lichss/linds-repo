@@ -18,6 +18,34 @@ void* lineaCreat(){
 	return linea; 
 }
 
+int lineaAppend(lineaSt* linea,Dtype* data){
+
+	if(linea->last < 0 || linea->last >= DATASIZE)
+		return -1;
+
+	linea->data[linea->last] = *data;	
+	linea->last++;
+	return 0;
+}
+int lineaInsert(lineaSt* linea,int index,Dtype* data){
+
+	if(index > DATASIZE)
+		return -1;
+	if(linea->last >= DATASIZE-1)
+		return -1;
+	
+//	for(int i=linea->last-1; i>index; i--){
+//		linea->data[i] = linea->data[i-1];
+//	}
+	for(int i=linea->last-1;i>=index;i--){
+		linea->data[i+1] = linea->data[i];
+		
+	}
+	linea->data[index] = *data;
+	linea->last++;
+	return 0;
+
+}
 int lineaPrint(lineaSt* linea){
 
 	for(int i=0;i<DATASIZE;i++){
@@ -25,6 +53,19 @@ int lineaPrint(lineaSt* linea){
 	}
 	return 0;
 }
+
+void lineaLocalCreat(lineaSt** ptr){
+
+	*ptr = malloc(sizeof(lineaSt));
+	if(! *ptr)
+		printf("fail malloc.\n");
+	else
+		(*ptr)->last = 0;
+
+	return;
+}
+
+
 #if 0
 void lineaLocalCreat(lineaSt**);
 
