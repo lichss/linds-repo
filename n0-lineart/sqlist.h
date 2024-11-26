@@ -22,7 +22,7 @@ int lineaAppend(lineaSt* linea,Dtype* data);
 int lineaInsert(lineaSt* linea,int index,Dtype* data);
 int lineaDelete(lineaSt* linea,int index);
 int lineaFind(lineaSt* linea,Dtype* data);
-int lineaIsempty(lineaSt* linea);
+int lineaIsEmpty(lineaSt* linea);
 
 int lineaClean(lineaSt*);
 int lineaLenth(lineaSt*);

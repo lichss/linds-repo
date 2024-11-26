@@ -75,12 +75,31 @@ int lineaDelete(lineaSt* linea,int index){
 
 	for (int i=index;i<linea->last;i++){
 		linea->data[i] =  linea->data[i+1];
-		
 	}
+	/*
+	 * 这个地方其实是有隐患的。有一块申请的（在极端情况下可能是			未申请的）内存会被前移一位。不是很好，当然后续应该会被覆			盖，所以我暂时觉得没问题。
+	 */
 	linea->last--;
 	return 0;
 }
 
+int lineaLenth(lineaSt* linea){
+
+	return linea->last ;
+
+}
+
+int lineaClear(lineaSt* linea){
+
+	linea->last = 0;
+	return 0;
+}
+
+int lineaIsEmpty(lineaSt* linea){
+
+	return (linea->last == 0);
+
+}
 #if 0
 void lineaLocalCreat(lineaSt**);
 
