@@ -48,9 +48,10 @@ int lineaInsert(lineaSt* linea,int index,Dtype* data){
 }
 int lineaPrint(lineaSt* linea){
 
-	for(int i=0;i<DATASIZE;i++){
+	for(int i=0;i<linea->last;i++){
 			printf("%d\t",linea->data[i]);
 	}
+	printf("\n");
 	return 0;
 }
 
@@ -65,6 +66,20 @@ void lineaLocalCreat(lineaSt** ptr){
 	return;
 }
 
+int lineaDelete(lineaSt* linea,int index){
+
+	if(index>=linea->last || index <0){
+		return -1;
+		// means out of index;
+	}
+
+	for (int i=index;i<linea->last;i++){
+		linea->data[i] =  linea->data[i+1];
+		
+	}
+	linea->last--;
+	return 0;
+}
 
 #if 0
 void lineaLocalCreat(lineaSt**);

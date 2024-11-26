@@ -11,7 +11,7 @@ int main(){
 	lineaSt* plin2 = 0;
 
 	plin = lineaCreat();
-	lineaLocalCreat(&plin2);
+	lineaLocalCreat(&pip3 install ansys-mapdl-coreplin2);
 	printf("sizeof %lld address:%p\n",sizeof(*plin),plin);
 	printf("sizeof %lld address:%p\n",sizeof(*plin2),plin2);
 	printf("now last:%d\n",plin->last);
@@ -35,16 +35,37 @@ int main(){
 	printf("RUNING\n");
 	lineaSt* linp;
 	lineaLocalCreat(&linp);
+	int inss[] = {21,31,41,51,61,71};
 
 	for(int i=0;i<16;i++){
 		lineaAppend(linp,&i);	
 	}
-	int ins = 99;
-	lineaInsert(linp,5,&ins);
+
+	for(int i=0;i<linp->last+10;i++){
+		printf("%d\t",linp->data[i]);
+	}
+	printf("now last:%d",linp->last);
+	for(int i=0;i<sizeof(inss)/sizeof(*inss);i++){
+		lineaInsert(linp,0,inss+i);
+		if( 0){
+			fprintf(stderr,"insert error.\n");
+			exit(0);
+
+		}else{
+			printf("insert %d to index %d success.\n",*inss+i,i+5);
+		}
+
+	}
+	printf("\n\n");
 	for(int i=0;i<linp->last+10;i++){
 		printf("%d\t",linp->data[i]);
 
 	}
+	printf("now last:%d",linp->last);
+	printf("test delete--------\n");
+	lineaDelete(linp,3);
+	lineaPrint(linp);
+	printf("now last:%d",linp->last);
 	return 0;
 }
 
