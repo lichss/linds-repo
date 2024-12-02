@@ -41,9 +41,6 @@ int linkedInitset(linkedList* head,int valueArray[],int size){
 
 }
 
-
-
-
 int linkedPrint(linkedList* head){
 	linkedList* node = head;
 	int count = 0;
@@ -55,8 +52,30 @@ int linkedPrint(linkedList* head){
 	}
 	return count;
 }
+//目前这样写有点问题。但我不是很想该了。等到时候写个带dummyhead
+//应该好解决
+int linkedInsert(linkedList* head,linkedList* nodeToInsert,int index){
 
-
+	if(index<=0)
+		return -1;
+	linkedList* prev= NULL;
+	linkedList* node= head;
+	int chase=0;
+	
+	while(node){
+		if(chase == index){
+			prev->next = nodeToInsert;	
+			nodeToInsert->next = node;
+			return 0;
+		}
+		prev = node;
+		node = node->next;
+		chase++;
+			
+	}
+	printf("insert err.\n");
+	return -1;
+}
 
 
 

@@ -24,5 +24,10 @@ int main(){
 
 	linkedPrint(node1);	
 
+	linkedList* nodex = linkedCreat();
+	nodex->value = 99;
+	linkedInsert(node1,nodex,2);
+	linkedPrint(node1);	
+
 	return 0;
 }

@@ -20,6 +20,8 @@ void* linkedCreat();
 int linkedInitset(linkedList* head,int valueArray[],int size);
 
 int linkedPrint(linkedList* head);
+int linkedInsert(linkedList* head,linkedList* nodeToInsert,int index);
+
 
 
 
