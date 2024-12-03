@@ -21,8 +21,10 @@ int linkedInitset(linkedList* head,int valueArray[],int size);
 
 int linkedPrint(linkedList* head);
 int linkedInsert(linkedList* head,linkedList* nodeToInsert,int index);
-
-
+int linkedOrderInsert(linkedList* head,int,Datatype valueArray[],int size);
+int linkedInsertD(linkedList* head,linkedList* nodeToInsert,int index);
+int linkedDelete(linkedList* head,int indexToDelete);
+linkedList* linkedDeleteHead(linkedList* head);
 
 
 #endif

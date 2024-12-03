@@ -24,10 +24,21 @@ int main(){
 
 	linkedPrint(node1);	
 
-	linkedList* nodex = linkedCreat();
-	nodex->value = 99;
-	linkedInsert(node1,nodex,2);
-	linkedPrint(node1);	
+	linkedList* node_x = linkedCreat();
+	linkedList* node_y = linkedCreat();
+	
+	node_x->value = 99;
+	node_y->value = 19;
+	linkedInsertD(node1,node_y,0);
+	linkedInsert(node_y,node_x,2);
 
+	linkedDelete(node_y,4);
+	node_y =	linkedDeleteHead(node_y);
+	linkedPrint(node_y);	
+	printf("------------------test order insert\n");
+
+	int valueB[] = {2,22,222,2222,22222};
+	linkedOrderInsert(node_y,1,valueB,3);
+	linkedPrint(node_y);
 	return 0;
 }
