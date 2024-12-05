@@ -29,16 +29,22 @@ int main(){
 	
 	node_x->value = 99;
 	node_y->value = 19;
-	linkedInsertD(node1,node_y,0);
-	linkedInsert(node_y,node_x,2);
-
-	linkedDelete(node_y,4);
-	node_y =	linkedDeleteHead(node_y);
+	linkedInsertR(node1,node_y,0);
+	linkedInsertR(node_y,node_x,2);
 	linkedPrint(node_y);	
-	printf("------------------test order insert\n");
 
-	int valueB[] = {2,22,222,2222,22222};
-	linkedOrderInsert(node_y,1,valueB,3);
-	linkedPrint(node_y);
+	
+	//linkedDelete(node_y,4);
+//	node_y =	linkedDeleteHead(node_y);
+//	linkedPrint(node_y);	
+
+	if(0){
+		printf("------------------test order insert\n");
+
+		int valueB[] = {2,22,222,2222,22222};
+		linkedOrderInsert(node_y,1,valueB,3);
+		linkedPrint(node_y);
+	}
+	linkedDestruction(node_y);
 	return 0;
 }

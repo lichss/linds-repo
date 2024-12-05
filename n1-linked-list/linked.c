@@ -3,16 +3,18 @@
 
 #include "linked.h"
 
-void* linkedCreat(){
+linkedList* linkedCreat(){
 
 	int n = sizeof(linkedList);
 	printf("sizeof(linkedList) = %d\n",n);
 	
-	void* creatPtr = 0;
+	linkedList* creatPtr = 0;
 	creatPtr = malloc(n);
 
-	if(creatPtr)
+	if(creatPtr){
+		creatPtr->next = NULL;
 		return creatPtr;
+	}
 	else{
 		printf("creating err.\n");
 		return 0;
@@ -27,7 +29,16 @@ int linkedCreatLocal(linkedList** creatPtr){
 
 	return 0;
 }
+// 这tm能有甚么用
+// 而且，为啥celery你的返回值和函数名的逻辑正好是反着的？？
 
+int linkedIsEmpty(linkedList* head){
+	if(!head)
+		return -1;
+	if(head->next)
+		return 0;
+	return 1;
+}
 int linkedInitset(linkedList* head,int valueArray[],int size){
 
 	linkedList* node = head;
@@ -76,12 +87,37 @@ int linkedPrint(linkedList* head){
 	int count = 0;
 	while(node){
 
-		printf("node%d --%d\n",count,node->value);
+		printf("node%d -- %d\n",count,node->value);
 		node = node->next;
 		count++;
 	}
 	return count;
 }
+int linkedInsertR(linkedList* head,linkedList* nodeToInsert,int index){
+
+	if(!head || index < 0)
+		return -1;
+	
+	linkedList dummy;
+	dummy.next = head;
+	linkedList* node = &dummy;
+	int chase = 0;
+
+	while(node){
+		if(chase == index){
+			nodeToInsert->next = node->next;
+			node->next = nodeToInsert;
+			return 0;
+		}
+		chase++;
+		node = node->next;
+
+	}
+
+	return -2;
+}
+
+
 //目前这样写有点问题。但我不是很想该了。等到时候写个带dummyhead
 //应该好解决
 int linkedInsert(linkedList* head,linkedList* nodeToInsert,int index){
@@ -107,6 +143,7 @@ int linkedInsert(linkedList* head,linkedList* nodeToInsert,int index){
 	return -1;
 }
 
+//这个应该是更好的版本。D表示dummy 虚拟头节点
 int linkedInsertD(linkedList* head,linkedList* nodeToInsert,int index){
 
 	if(!head){
@@ -188,6 +225,15 @@ linkedList* linkedDeleteHead(linkedList* head){
 
 }
 
+void linkedDestruction(linkedList* head){
 
+	linkedList* prev = NULL;
+	for(linkedList* node = head;node;){
+		free(prev);
+		prev = node;
+		node = node->next;	
+
+	}
+}
 
 
