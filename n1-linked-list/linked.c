@@ -235,6 +235,29 @@ int linkedDelete(linkedList* head,int indexToDelete){
 }
 
 
+int linkedDeleteByValuep(linkedList* head,Datatype* valueToDelP){
+
+	if(!head)
+		return -1;
+
+	linkedList dummy;
+	dummy.next = head;
+
+	linkedList* prev = &dummy;
+	linkedList* node = head;
+
+	while(node){
+		if(node->value == *valueToDelP){
+			prev->next = node->next;
+			free(node);
+
+			return 0;
+		}
+		prev = node;
+		node = node->next;
+	}
+	return -2;
+}
 linkedList* linkedDeleteHead(linkedList* head){
 	
 	int indexToDelete =0;

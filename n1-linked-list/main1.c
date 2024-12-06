@@ -26,6 +26,7 @@ int main(){
 	for(int i=0;i<sizeof(valueA)/sizeof(*valueA)  ;i++){
 		linkedOrderInsert(node1,valueA+i);	
 	}
+	linkedDeleteByValuep(node1,valueA+5);
 	linkedPrint(node1);
 
 	return 0;

@@ -30,6 +30,8 @@ int linkedOrderInsert(linkedList* head,Datatype* valueToInsert);
 int linkedOrderInsertX(linkedList* head,int,Datatype valueArray[],int size);
 int linkedInsertD(linkedList* head,linkedList* nodeToInsert,int index);
 int linkedDelete(linkedList* head,int indexToDelete);
+int linkedDeleteByValuep(linkedList* head,Datatype* valueToDelP);
+
 linkedList* linkedDeleteHead(linkedList* head);
 
 void linkedDestruction(linkedList* head);
