@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Wall -g -c 
 TARGET = main
-OBJS = main.o linked.o
+OBJS = main1.o linked.o
 
 
 $(TARGET):$(OBJS)

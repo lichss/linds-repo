@@ -19,12 +19,15 @@ linkedList* linkedCreat();
 
 int linkedInitset(linkedList* head,int valueArray[],int size);
 
-int linkedIsEmpty(linkedList* head){
+int linkedIsEmpty(linkedList* head);
 
 int linkedPrint(linkedList* head);
 int linkedInsert(linkedList* head,linkedList* nodeToInsert,int index);
 int linkedInsertR(linkedList* head,linkedList* nodeToInsert,int index);
-int linkedOrderInsert(linkedList* head,int,Datatype valueArray[],int size);
+
+int linkedOrderInsert(linkedList* head,Datatype* valueToInsert);
+
+int linkedOrderInsertX(linkedList* head,int,Datatype valueArray[],int size);
 int linkedInsertD(linkedList* head,linkedList* nodeToInsert,int index);
 int linkedDelete(linkedList* head,int indexToDelete);
 linkedList* linkedDeleteHead(linkedList* head);

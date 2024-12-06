@@ -52,21 +52,59 @@ int linkedInitset(linkedList* head,int valueArray[],int size){
 
 }
 
-//
+int linkedOrderInsert(linkedList* head,Datatype* valueToInsert){
+	
+	if(!head)
+		return -1;
+
+	linkedList dummy;
+	dummy.next = head;
+	
+	linkedList* prev = &dummy;
+	linkedList* node = head;
+	linkedList* newnodeP;
+
+	while(node){
+		if(node->value > *valueToInsert){
+			newnodeP = linkedCreat();
+			newnodeP->value = *valueToInsert;
+			newnodeP->next = node;
+			prev->next = newnodeP;
+
+			return 0;
+		}
+		prev = node;	
+		node = node->next;
+	}
+
+	newnodeP = linkedCreat();
+	newnodeP->value = *valueToInsert;
+	newnodeP->next = NULL;
+	prev->next = newnodeP;
+
+
+	return 0;
+
+}
+//测。原来order是大小顺序。好好好。我现在改。
 //现在还有个小小的问题 index 对不上。
-int linkedOrderInsert(linkedList* head,int index ,Datatype valueArray[],int size){
+int linkedOrderInsertX(linkedList* head,int index ,Datatype valueArray[],int size){
 
 	if(!head|| index<0)
 		return -1;
+	linkedList dummy;
+	dummy.next = head;
+
 	linkedList* node = head;
+	linkedList* prev = &dummy;
 
 	int chase = 0;
 	while(chase!=index){
+		prev = node;
 		node = node->next;	
 		chase++;
 	}
-	linkedList* prev = node;	
-	linkedList* rear = node->next;
+	linkedList* rear = node;
 	int i=0;
 	linkedList* newd = NULL;
 	for(;i<size;i++){

@@ -38,7 +38,7 @@ int main(){
 //	node_y =	linkedDeleteHead(node_y);
 //	linkedPrint(node_y);	
 
-	if(0){
+	if(1){
 		printf("------------------test order insert\n");
 
 		int valueB[] = {2,22,222,2222,22222};
@@ -48,3 +48,7 @@ int main(){
 	linkedDestruction(node_y);
 	return 0;
 }
+
+
+
+
