@@ -6,6 +6,13 @@
 
 
 
+int listInsert(listNode* head,data* toInsert){
+
+
+
+	return 0;
+}
+
 int listPrint(listNode* head){
 
 	listNode* node = head;
@@ -15,10 +22,8 @@ int listPrint(listNode* head){
 		printf("--%d node\n",i++);
 		printf("id:%d\tname:%s\tdata1:%d\tdata2:%d\n",
 				node->data.id,node->data.name,node->data.d1,node->data.d2);
-
+		node = node->next;
 	}
 	
-
-
-	return 0;
+	return i;
 }
