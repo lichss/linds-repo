@@ -2,7 +2,7 @@
 #define __LINKED__H__
 
 //#define printf("[%s]:%d",__FUNCTION__,__LINE__) debug_print 
-
+#define null NULL
 typedef int Datatype;
 
 typedef struct linkedList{
@@ -29,7 +29,7 @@ int linkedOrderInsert(linkedList* head,Datatype* valueToInsert);
 
 int linkedOrderInsertX(linkedList* head,int,Datatype valueArray[],int size);
 int linkedInsertD(linkedList* head,linkedList* nodeToInsert,int index);
-int linkedDelete(linkedList* head,int indexToDelete);
+int linkedDelete(linkedList* head,int indexToDelete,Datatype* valueToDel);
 int linkedDeleteByValuep(linkedList* head,Datatype* valueToDelP);
 
 linkedList* linkedDeleteHead(linkedList* head);

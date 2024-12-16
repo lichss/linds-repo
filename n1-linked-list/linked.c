@@ -211,25 +211,28 @@ int linkedInsertD(linkedList* head,linkedList* nodeToInsert,int index){
 	return -1;
 }
 
-int linkedDelete(linkedList* head,int indexToDelete){
+int linkedDelete(linkedList* head,int indexToDelete,Datatype* valueToDel){
 	
 	linkedList* dummy = linkedCreat();
 	linkedList* prev = dummy;
 	linkedList* node = head;
 
-	if(!dummy || !head)
+	if(!dummy || !head || indexToDelete<0)
 		return -1;
 	dummy->next = head;	//确定dummy有效之后再操作。
 
 	int chase=0;
 	while(node){
 		if(chase++ == indexToDelete){
+
 			prev->next = node->next;
+			*valueToDel = node->value;
+			free(node);
+
 			return 0;	
 		}
 		prev = node;	
 		node = node->next;	
-
 	}
 	return 0;
 }

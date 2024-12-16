@@ -28,6 +28,13 @@ int main(){
 	}
 	linkedDeleteByValuep(node1,valueA+5);
 	linkedPrint(node1);
+	Datatype value = 0;
+	Datatype* p= &value;
+
+
+	linkedDelete(node1,3,p);
+	printf("now delete index 3,index 3 = %d \n",*p);
+	linkedPrint(node1);	
 
 	return 0;
 }
