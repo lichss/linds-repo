@@ -13,13 +13,22 @@ typedef struct testST
 	int data2;
 } testST;
 
-int tprint(testST* st){
-
+int tprint(const void* stv){
+	if(!stv)
+		return 1;
+	const testST* st = stv;
 	printf("%d %s %d %d\n",st->id,st->name,st->data1,st->data2);
 
 	return 0;
 }
 
+int testST_CMP(const void* var1,const void* var2){
+	const int* v1 = var1;
+	const testST* v2 = var2;
+
+	return v2->id - *v1;
+
+}
 
 int main(){
 
@@ -34,14 +43,16 @@ int main(){
 		snprintf(newst.name,NAMESIZE,"stu%d",i);
 		newst.data1 = rand()%100;
 		newst.data2 = rand()%100;	
-		linkedInsert(handle,&newst,0);
-		printf("%p\n",&newst);
+		linkedInsert(handle,&newst,INSERT_MODE_BACKWARD);
 	}
-	for(int i=0;i<16;i++){
-		linkNode* node = handle->head.next;
-			
-	}
-	//linkedPrint(handle,tprint);
+
+	linkedPrint(handle,tprint);
+	int ftest;
+	ftest = 9;
+	linkNode* node = linkedFind(handle,&ftest,testST_CMP);
+	tprint(node->data );	
+
+	
 	printf("runover\n");
 	return 0;
 }

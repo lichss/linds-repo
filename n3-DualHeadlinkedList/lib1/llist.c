@@ -1,6 +1,21 @@
 #include "llist.h"
 
 
+static linkNode* find_(LinkedList* handle,const void* key, linkedCMP_ * callback){
+	// callback should return false, if value same,else return true
+	
+	linkNode* nodep;
+	nodep = handle->head.next;
+	while(nodep!=&handle->head){
+		if(!callback(key,nodep->data))
+			return nodep;
+		nodep = nodep->next;
+	}
+
+	return NULL;
+
+}
+
 LinkedList* linkedCreat(int size){
 
 	LinkedList* newHead;
@@ -23,7 +38,7 @@ int linkedInsert(LinkedList* LL,const void* data,int mode){
 		return -1;
 	newnode->data = malloc(LL->size);
 	memcpy(newnode->data,data,LL->size);
-
+	
 	if(mode == INSERT_MODE_FORWARD){
 		newnode->next = LL->head.next;
 		newnode->prev = &LL->head;
@@ -40,16 +55,39 @@ int linkedInsert(LinkedList* LL,const void* data,int mode){
 	return 0;
 }
 
-int linkedPrint(LinkedList* LL,int (*printFp)(void*) ){
+int linkedPrint(LinkedList* LL, linkedP* callback ){
 	linkNode* node = LL->head.next;
 	while(node!=&LL->head){
-		printFp(node);
+		callback(node->data);
 		node = node->next;
 	}
 	printf("\n");
 
 	return 0;
 }
+void* linkedFind(LinkedList* handle, const void* key, linkedCMP_* callback){
+
+	linkNode* node = handle->head.next;
+	
+	node = find_(handle,key,callback);
+	return node;	
+}
+
+
+void linkedDelete(LinkedList* handle,const void* key,linkedCMP_* callback,void* data){
+
+	linkNode* nodeTodel = NULL;
+	nodeTodel = find_(handle,key,callback);
+
+	nodeTodel->prev->next = nodeTodel->next;
+	nodeTodel->next->prev = nodeTodel->prev;
+
+	free(nodeTodel);
+
+
+
+}
+
 int linkedDestruct(LinkedList* LL){
 
 	linkNode* nn;

@@ -8,6 +8,8 @@
 #define INSERT_MODE_FORWARD 0
 #define INSERT_MODE_BACKWARD 1
 
+typedef int linkedP(const void*);
+typedef int linkedCMP_(const void* var1, const void* var2);
 
 typedef struct linkNode{
 
@@ -26,11 +28,11 @@ typedef struct {
 
 LinkedList* linkedCreat(int size);
 
-int linkedInsert(LinkedList* LL,const void* data,int mode);
+int linkedInsert(LinkedList* handle,const void* data,int mode);
 
-int linkedPrint(LinkedList* LL,int (*printFp)(void*) );
-void linkedFind();
-void linkedDelte();
+int linkedPrint(LinkedList* handle,linkedP* callback);
+void* linkedFind(LinkedList* handle, const void* key, linkedCMP_* callback);
+void linkedDelete(LinkedList* handle,const void* key,linkedCMP_* callback,void* data);
 void linkedFetch();
 int linkedDestruct();
 
