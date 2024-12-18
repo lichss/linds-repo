@@ -21,7 +21,6 @@ LinkedList* linkedCreat(int size){
 	LinkedList* newHead;
 	newHead = malloc(sizeof(*newHead));
 	
-	newHead->head.data = NULL;
 	newHead->size = size;
 	newHead->head.next = &newHead->head;
 	newHead->head.prev = &newHead->head;
@@ -33,10 +32,9 @@ LinkedList* linkedCreat(int size){
 int linkedInsert(LinkedList* LL,const void* data,int mode){
 
 	linkNode* newnode = NULL;
-	newnode = malloc(sizeof(*newnode));
+	newnode = malloc(sizeof(*newnode)+LL->size);
 	if(!newnode)
 		return -1;
-	newnode->data = malloc(LL->size);
 	memcpy(newnode->data,data,LL->size);
 	
 	if(mode == INSERT_MODE_FORWARD){
@@ -82,7 +80,6 @@ void linkedDelete(LinkedList* handle,const void* key,linkedCMP_* callback,void* 
 	nodeTodel->prev->next = nodeTodel->next;
 	nodeTodel->next->prev = nodeTodel->prev;
 
-	free(nodeTodel->data);
 	free(nodeTodel);
 
 	return;
@@ -111,7 +108,6 @@ void linkedFetch(LinkedList* handle,const void* key,linkedCMP_* callback,void* d
 
 
 	
-	free(nodeTofetch->data);
 	free(nodeTofetch);
 	return;
 }

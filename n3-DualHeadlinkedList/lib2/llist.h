@@ -13,10 +13,9 @@ typedef int linkedCMP_(const void* var1, const void* var2);
 
 typedef struct linkNode{
 
-	void* data; 
 	struct linkNode* prev;
 	struct linkNode* next;
-
+	char data[0];
 } linkNode;
 
 typedef struct {
