@@ -59,7 +59,7 @@ int main(){
     stackPrint(shandle,tstPrint);
 
     testST tpop;
-    tstPrint(&tpop);
+    
     stackPop(shandle,&tpop);
 
     printf("show pop------\n");

@@ -22,5 +22,5 @@ int queueEn(Queue* handle,datatype* data);
 
 int queueDe(Queue* handel, datatype* data);
 
-
+  
 #endif
